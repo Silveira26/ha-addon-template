@@ -38,3 +38,4 @@ jobs:
             ghcr.io/${{ env.REPO_NAME }}/amd64
             ghcr.io/${{ env.REPO_NAME }}/armv7
             ghcr.io/${{ env.REPO_NAME }}/arm64
+            ghcr.io/${{ env.REPO_NAME }}
