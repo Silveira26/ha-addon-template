@@ -7,6 +7,8 @@ RUN apk add --no-cache py3-pip
 
 RUN python3 -m venv venv
 
+COPY requirements.txt requirements.txt
+
 RUN source ./venv/bin/activate && \
     pip install -r requirements.txt
 
