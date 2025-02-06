@@ -14,4 +14,4 @@ options:
   log_message: "Hello from the addon!"
 schema:
   log_message: "str"
-image: ghcr.io/silveira26/ha-addon-template
+image: ghcr.io/silveira26/ha-addon-template:latest
