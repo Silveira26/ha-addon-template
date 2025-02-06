@@ -1,7 +1,7 @@
 #!/usr/bin/with-contenv bashio
 
 # Read config values using Bashio
-LOG_MESSAGE=$(bashio::config 'log_message')
+LOG_MESSAGE=$(bashio::config 'log_message') 
 
 # Export as environment variables
 export LOG_MESSAGE
