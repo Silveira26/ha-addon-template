@@ -11,6 +11,15 @@ jobs:
       - name: Check out repo
         uses: actions/checkout@v3
 
+      - name: Extract version from config.yaml
+        id: get_version
+        run: |
+          # Extract the version string from config.yaml
+          # This assumes the version line is like: version: "2.0.0"
+          VERSION=$(grep '^version:' config.yaml | sed 's/version: *"//; s/"//')
+          echo "VERSION=${VERSION}" >> $GITHUB_ENV
+          echo "Version is ${VERSION}"
+
       - name: Set up QEMU (for multi-arch)
         uses: docker/setup-qemu-action@v2
 
@@ -35,7 +44,7 @@ jobs:
           push: true
           file: ./Dockerfile
           tags: |
-            ghcr.io/${{ env.REPO_NAME }}/amd64:latest
-            ghcr.io/${{ env.REPO_NAME }}/armv7:latest
-            ghcr.io/${{ env.REPO_NAME }}/arm64:latest
-            ghcr.io/${{ env.REPO_NAME }}:latest
+            ghcr.io/${{ env.REPO_NAME }}-amd64:${{ env.VERSION }}
+            ghcr.io/${{ env.REPO_NAME }}-armv7:${{ env.VERSION }}
+            ghcr.io/${{ env.REPO_NAME }}-arm64:${{ env.VERSION }}
+            ghcr.io/${{ env.REPO_NAME }}:${{ env.VERSION }}
